@@ -37,7 +37,7 @@ class FirebaseAuthProvider implements AuthProvider {
       } else if (e.code == 'email-already-in-use') {
         throw EmailAlreadyInUseAuthException();
       } else if (e.code == 'invalid-email') {
-        throw EmailAlreadyInUseAuthException();
+        throw InvalidEmailAuthException();
       } else {
         throw GenericAuthException();
       }
@@ -62,7 +62,7 @@ class FirebaseAuthProvider implements AuthProvider {
     required String password,
   }) async {
     try {
-      FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -101,7 +101,7 @@ class FirebaseAuthProvider implements AuthProvider {
     if (user != null) {
       await user.sendEmailVerification();
     } else {
-      throw UserNotFoundAuthException();
+      throw UserNotLoggedInAuthException();
     }
   }
 }
