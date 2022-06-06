@@ -31,7 +31,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                     const AuthEventSendEmailVerification(),
                   );
             },
-            child: const Text('Send email verification'),
+            child: const Text('Send email verification again'),
           ),
           TextButton(
             onPressed: () async {
@@ -39,7 +39,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                     const AuthEventLogOut(),
                   );
             },
-            child: const Text('Restart'),
+            child: const Text('Back to login'),
           )
         ],
       ),
